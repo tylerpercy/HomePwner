@@ -52,14 +52,24 @@ class ItemsViewController: UITableViewController {
         // will appear in on the tableview
         let item = itemStore.allItems[indexPath.row]
         cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
-        if item.valueInDollars < 50 {
-            cell.detailTextLabel?.textColor = UIColor.green
+        
+        if item.valueInDollars != nil {
+            cell.detailTextLabel?.text = "$\(item.valueInDollars!)"
         } else {
-            cell.detailTextLabel?.textColor = UIColor.red
+            cell.detailTextLabel?.text = nil
+            cell.textLabel?.textAlignment = .right
+        }
+        
+        if item.valueInDollars != nil {
+            if Int(item.valueInDollars!)! < 50 {
+                cell.detailTextLabel?.textColor = UIColor.green
+            } else {
+                cell.detailTextLabel?.textColor = UIColor.red
+            }
         }
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView,
                             moveRowAt sourceIndexPath: IndexPath,
@@ -67,6 +77,19 @@ class ItemsViewController: UITableViewController {
         // Update the model
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
+ 
+    /*
+    override func tableView(_ tableView: UITableView,
+                            targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+                            toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        
+        if sourceIndexPath.row == 0 {
+            return sourceIndexPath
+        } else {
+            return proposedDestinationIndexPath
+        }
+    }
+    */
     
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,

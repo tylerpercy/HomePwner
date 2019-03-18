@@ -13,7 +13,7 @@ class ItemStore {
     
     @discardableResult func createItem() -> Item {
         let newItem = Item(random: true)
-        allItems.append(newItem)
+        allItems.insert(newItem, at: 0)
         
         return newItem
     }
@@ -39,6 +39,7 @@ class ItemStore {
     init() {
         let noMoreItems = Item(random: false)
         noMoreItems.name = "No More Items!"
+        noMoreItems.valueInDollars = nil
         allItems.append(noMoreItems)
     }
 }
