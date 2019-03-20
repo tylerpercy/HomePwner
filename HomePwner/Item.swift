@@ -10,11 +10,11 @@ import UIKit
 
 class Item: NSObject {
     var name: String
-    var valueInDollars: String?
+    var valueInDollars: Int
     var serialNumber: String?
     let dateCreated: Date
     
-    init(name: String, serialNumber: String?, valueInDollars: String?) {
+    init(name: String, serialNumber: String?, valueInDollars: Int) {
         self.name = name
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
@@ -36,9 +36,9 @@ class Item: NSObject {
                 UUID().uuidString.components(separatedBy: "-").first!
             self.init(name: randomName,
                       serialNumber: randomSerialNumber,
-                      valueInDollars: String(randomValue))
+                      valueInDollars: randomValue)
         } else {
-            self.init(name: "", serialNumber: nil, valueInDollars: "")
+            self.init(name: "", serialNumber: nil, valueInDollars: 0)
         }
     }
 }

@@ -35,13 +35,14 @@ class ItemStore {
         // Insert item in array at new location
         allItems.insert(movedItem, at: toIndex)
     }
-    
+    /*
     init() {
         let noMoreItems = Item(random: false)
         noMoreItems.name = "No More Items!"
-        noMoreItems.valueInDollars = nil
+        noMoreItems.valueInDollars = 0
         allItems.append(noMoreItems)
     }
+    */
 }
 
 

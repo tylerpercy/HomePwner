@@ -40,7 +40,7 @@ class ItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        return itemStore.allItems.count
+        return itemStore.allItems.count + 1
     }
     
     override func tableView(_ tableView: UITableView,
@@ -50,26 +50,30 @@ class ItemsViewController: UITableViewController {
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
-        let item = itemStore.allItems[indexPath.row]
-        cell.textLabel?.text = item.name
+        if indexPath.row < itemStore.allItems.count {
+            let item = itemStore.allItems[indexPath.row]
+            cell.textLabel?.text = item.name
+            cell.detailTextLabel?.text = "$\(item.valueInDollars)"
         
-        if item.valueInDollars != nil {
-            cell.detailTextLabel?.text = "$\(item.valueInDollars!)"
-        } else {
-            cell.detailTextLabel?.text = nil
-            cell.textLabel?.textAlignment = .right
-        }
-        
-        if item.valueInDollars != nil {
-            if Int(item.valueInDollars!)! < 50 {
+            if item.valueInDollars < 50 {
                 cell.detailTextLabel?.textColor = UIColor.green
             } else {
                 cell.detailTextLabel?.textColor = UIColor.red
             }
+            return cell
+        } else {
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell_NMI")
+            cell.textLabel?.text = "No more Items!"
+            return cell
         }
-        return cell
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if (indexPath.row >= itemStore.allItems.count){
+            return false
+        }
+        return true
+    }
     
     override func tableView(_ tableView: UITableView,
                             moveRowAt sourceIndexPath: IndexPath,
@@ -78,18 +82,6 @@ class ItemsViewController: UITableViewController {
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
  
-    /*
-    override func tableView(_ tableView: UITableView,
-                            targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
-                            toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        
-        if sourceIndexPath.row == 0 {
-            return sourceIndexPath
-        } else {
-            return proposedDestinationIndexPath
-        }
-    }
-    */
     
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
