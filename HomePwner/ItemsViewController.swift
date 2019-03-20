@@ -11,6 +11,10 @@ import UIKit
 class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
+    
+    
+    //Function addNewItem: A button on the main storyboard will create a
+    //                     new item each time it is pressed
     @IBAction func addNewItem(_ sender: UIButton) {
         // Create a new item and add it to the store
         let newItem = itemStore.createItem()
@@ -22,6 +26,14 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    /* Function: toggleEditingMode
+     *
+     * Precondition: a button labeled 'edit' is placed on the main storyboard
+     *
+     * Postcondition: the button toggles the current state of the tableview
+     *                between viewing mode and editing mode
+     *
+     */
     @IBAction func toggleEditingMode(_ sender: UIButton) {
         // If you are currently in editing mode...
         if isEditing {
@@ -37,11 +49,15 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    //This function maintains the number of rows in the tableview
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
         return itemStore.allItems.count + 1
     }
     
+   
+    //This function creates a randomly generated object and adds it to the tableview
+    //The object is put in its own cell which has a name, serial number, and price
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -56,16 +72,21 @@ class ItemsViewController: UITableViewController {
             cell.nameLabel.text = item.name
             cell.serialNumberLabel.text = item.serialNumber
             cell.valueLabel.text = "$\(item.valueInDollars)"
+            //Transparency so you can still see the dog in the background after cells are added
             cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
+            //Color prices based on expense
             if item.valueInDollars < 50 {
-                cell.valueLabel.textColor = UIColor.green
+                cell.valueLabel.textColor =
+                    UIColor(red: 64/255, green: 155/255, blue: 0/255, alpha: 1.0)
             } else {
-                cell.valueLabel.textColor = UIColor.red
+                cell.valueLabel.textColor =
+                    UIColor(red: 201/255, green: 0/255, blue: 0/255, alpha: 1.0)
             }
             return cell
+        //This is to add the unique "No More Items!" cell to the bottom
         } else {
-            let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell_NMI")
+            let cell = UITableViewCell(style: UITableViewCellStyle .default, reuseIdentifier: "UITableViewCell_NMI")
             cell.textLabel?.text = "No more Items!"
             cell.textLabel?.textAlignment = .center
             cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
@@ -73,6 +94,7 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    //Disallows editing the "No More Items!" cell
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if (indexPath.row >= itemStore.allItems.count){
             return false
@@ -80,6 +102,7 @@ class ItemsViewController: UITableViewController {
         return true
     }
     
+    //This function allows you to swap the location of cells in the tableview
     override func tableView(_ tableView: UITableView,
                             moveRowAt sourceIndexPath: IndexPath,
                             to destinationIndexPath: IndexPath) {
@@ -87,13 +110,17 @@ class ItemsViewController: UITableViewController {
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
     
-    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    //This function disallows swapping cells below the "No More Items!" cell
+    override func tableView(_ tableView: UITableView,
+                            targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+                            toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         if (proposedDestinationIndexPath.row >= itemStore.allItems.count){
             return sourceIndexPath
         }
         return proposedDestinationIndexPath
     }
     
+    //This function is in charge of deleting and confirming the deletion of a cell
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
@@ -123,7 +150,9 @@ class ItemsViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    //renaming the swipe-to-delete button
+    override func tableView(_ tableView: UITableView,
+                            titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Remove"
     }
     
