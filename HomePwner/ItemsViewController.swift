@@ -11,7 +11,6 @@ import UIKit
 class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
-    
     @IBAction func addNewItem(_ sender: UIButton) {
         // Create a new item and add it to the store
         let newItem = itemStore.createItem()
@@ -45,25 +44,31 @@ class ItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
-                                                 for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell",
+                                                 for: indexPath) as! ItemCell
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
         if indexPath.row < itemStore.allItems.count {
             let item = itemStore.allItems[indexPath.row]
-            cell.textLabel?.text = item.name
-            cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+            
+            cell.nameLabel.text = item.name
+            cell.serialNumberLabel.text = item.serialNumber
+            cell.valueLabel.text = "$\(item.valueInDollars)"
+            cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
             if item.valueInDollars < 50 {
-                cell.detailTextLabel?.textColor = UIColor.green
+                cell.valueLabel.textColor = UIColor.green
             } else {
-                cell.detailTextLabel?.textColor = UIColor.red
+                cell.valueLabel.textColor = UIColor.red
             }
             return cell
         } else {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "UITableViewCell_NMI")
             cell.textLabel?.text = "No more Items!"
+            cell.textLabel?.textAlignment = .center
+            cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
             return cell
         }
     }
@@ -81,7 +86,13 @@ class ItemsViewController: UITableViewController {
         // Update the model
         itemStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
- 
+    
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if (proposedDestinationIndexPath.row >= itemStore.allItems.count){
+            return sourceIndexPath
+        }
+        return proposedDestinationIndexPath
+    }
     
     override func tableView(_ tableView: UITableView,
                             commit editingStyle: UITableViewCellEditingStyle,
@@ -112,6 +123,10 @@ class ItemsViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Remove"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Get the height of the status bar
@@ -119,5 +134,21 @@ class ItemsViewController: UITableViewController {
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 65
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
+        super.viewWillAppear(animated)
+        
+        let backgroundImage = UIImage(named: "welcome.jpg")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableView.backgroundView = imageView
+        imageView.contentMode = .scaleAspectFill
+        tableView.backgroundColor = .lightGray
+        
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 }
