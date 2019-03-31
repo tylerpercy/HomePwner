@@ -14,6 +14,9 @@
 		7A60C0A9223FFA62002931FE /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60C0A8223FFA62002931FE /* ItemsViewController.swift */; };
 		7A60C0AB223FFB70002931FE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60C0AA223FFB70002931FE /* Item.swift */; };
 		7A60C0AD223FFF27002931FE /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60C0AC223FFF27002931FE /* ItemStore.swift */; };
+		7AC6FB2922516BAC0031EBE8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2822516BAC0031EBE8 /* DetailViewController.swift */; };
+		7AC6FB2B225173470031EBE8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2A225173470031EBE8 /* CustomTextField.swift */; };
+		7AC6FB2D225173AC0031EBE8 /* DateCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */; };
 		7AF1ABC02242A9D0003EFE37 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1ABBF2242A9D0003EFE37 /* ItemCell.swift */; };
 		7AF1ABC22242AF12003EFE37 /* welcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1ABC12242AF12003EFE37 /* welcome.jpg */; };
 /* End PBXBuildFile section */
@@ -28,6 +31,9 @@
 		7A60C0A8223FFA62002931FE /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		7A60C0AA223FFB70002931FE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7A60C0AC223FFF27002931FE /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		7AC6FB2822516BAC0031EBE8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		7AC6FB2A225173470031EBE8 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCreatedViewController.swift; sourceTree = "<group>"; };
 		7AF1ABBF2242A9D0003EFE37 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		7AF1ABC12242AF12003EFE37 /* welcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,9 +70,12 @@
 			children = (
 				7A4BB2EF223FF703000D6188 /* AppDelegate.swift */,
 				7A60C0AA223FFB70002931FE /* Item.swift */,
-				7A60C0AC223FFF27002931FE /* ItemStore.swift */,
-				7A60C0A8223FFA62002931FE /* ItemsViewController.swift */,
 				7AF1ABBF2242A9D0003EFE37 /* ItemCell.swift */,
+				7A60C0AC223FFF27002931FE /* ItemStore.swift */,
+				7AC6FB2A225173470031EBE8 /* CustomTextField.swift */,
+				7A60C0A8223FFA62002931FE /* ItemsViewController.swift */,
+				7AC6FB2822516BAC0031EBE8 /* DetailViewController.swift */,
+				7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */,
 				7A4BB2F3223FF703000D6188 /* Main.storyboard */,
 				7A4BB2F6223FF703000D6188 /* Assets.xcassets */,
 				7AF1ABC12242AF12003EFE37 /* welcome.jpg */,
@@ -149,11 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC6FB2B225173470031EBE8 /* CustomTextField.swift in Sources */,
 				7A60C0AB223FFB70002931FE /* Item.swift in Sources */,
 				7A60C0A9223FFA62002931FE /* ItemsViewController.swift in Sources */,
 				7A60C0AD223FFF27002931FE /* ItemStore.swift in Sources */,
+				7AC6FB2922516BAC0031EBE8 /* DetailViewController.swift in Sources */,
 				7A4BB2F0223FF703000D6188 /* AppDelegate.swift in Sources */,
 				7AF1ABC02242A9D0003EFE37 /* ItemCell.swift in Sources */,
+				7AC6FB2D225173AC0031EBE8 /* DateCreatedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
