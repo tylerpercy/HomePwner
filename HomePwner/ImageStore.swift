@@ -15,8 +15,8 @@ class ImageStore {
         cache.setObject(image, forKey: key as NSString)
         // Create full URL for image
         let url = imageURL(forKey: key)
-        // Turn image into JPEG data
-        if let data = UIImageJPEGRepresentation(image, 0.5) {
+        // Turn image into PNG data
+        if let data = UIImagePNGRepresentation(image) {
             // Write it to full URL
             let _ = try? data.write(to: url, options: [.atomic])
         }
