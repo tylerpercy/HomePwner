@@ -39,7 +39,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         imageStore.deleteImage(forKey: item.itemKey)
         imageView.image = nil
     }
-        
+    
     
     var item: Item! {
         didSet {
