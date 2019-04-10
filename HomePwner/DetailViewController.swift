@@ -27,10 +27,19 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         // just pick from photo library
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
+            let crosshair = UIButton(type: .contactAdd)
+            crosshair.tintColor = UIColor.white
+            crosshair.translatesAutoresizingMaskIntoConstraints = false
+            imagePicker.cameraOverlayView?.addSubview(crosshair)
+            imagePicker.cameraOverlayView?.isUserInteractionEnabled = false
+            crosshair.centerXAnchor.constraint(equalTo:
+                (imagePicker.cameraOverlayView?.centerXAnchor)!).isActive = true
+            crosshair.centerYAnchor.constraint(equalTo:
+                (imagePicker.cameraOverlayView?.centerYAnchor)!).isActive = true
+           
         } else {
             imagePicker.sourceType = .photoLibrary
         }
-        
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         present(imagePicker, animated: true, completion: nil)
