@@ -76,6 +76,7 @@ class ItemsViewController: UITableViewController {
     }
     
     //Disallows editing the "No More Items!" cell
+    //: Chapter 11 Silver
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if (indexPath.row >= itemStore.allItems.count){
             return false
@@ -92,6 +93,7 @@ class ItemsViewController: UITableViewController {
     }
     
     //This function disallows swapping cells below the "No More Items!" cell
+    //: Chapter 11 Gold
     override func tableView(_ tableView: UITableView,
                             targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
                             toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
@@ -133,6 +135,7 @@ class ItemsViewController: UITableViewController {
     }
     
     //renaming the swipe-to-delete button
+    //: Chapter 11 Bronze
     override func tableView(_ tableView: UITableView,
                             titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Remove"
@@ -165,7 +168,6 @@ class ItemsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         //self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-        
         let backgroundImage = UIImage(named: "welcome.jpg")
         let imageView = UIImageView(image: backgroundImage)
         self.tableView.backgroundView = imageView

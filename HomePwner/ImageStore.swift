@@ -16,6 +16,7 @@ class ImageStore {
         // Create full URL for image
         let url = imageURL(forKey: key)
         // Turn image into PNG data
+        //: Chapter 17 Bronze
         if let data = UIImagePNGRepresentation(image) {
             // Write it to full URL
             let _ = try? data.write(to: url, options: [.atomic])
@@ -25,10 +26,12 @@ class ImageStore {
         if let existingImage = cache.object(forKey: key as NSString) {
             return existingImage
         }
+        
         let url = imageURL(forKey: key)
         guard let imageFromDisk = UIImage(contentsOfFile: url.path) else {
             return nil
         }
+        
         cache.setObject(imageFromDisk, forKey: key as NSString)
         return imageFromDisk
     }

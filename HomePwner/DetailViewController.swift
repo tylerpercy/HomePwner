@@ -27,6 +27,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         // just pick from photo library
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
+            //: Chapter 15 Gold
             let crosshair = UIButton(type: .contactAdd)
             crosshair.tintColor = UIColor.white
             crosshair.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +46,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         present(imagePicker, animated: true, completion: nil)
     }
     
+    //: Chapter 15 Silver
     @IBAction func removeImage(_ sender: UIBarButtonItem) {
         imageStore.deleteImage(forKey: item.itemKey)
         imageView.image = nil
@@ -113,10 +115,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         }
     }
     
+    //: Chapter 14 Bronze
     override func viewDidLoad() {
         valueField.keyboardType = .numberPad
     }
     
+    //: Chapter 14 Gold
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal

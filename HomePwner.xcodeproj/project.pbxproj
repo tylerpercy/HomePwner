@@ -19,6 +19,7 @@
 		7AC6FB2922516BAC0031EBE8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2822516BAC0031EBE8 /* DetailViewController.swift */; };
 		7AC6FB2B225173470031EBE8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2A225173470031EBE8 /* CustomTextField.swift */; };
 		7AC6FB2D225173AC0031EBE8 /* DateCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */; };
+		7AC6FB2F225E6F060031EBE8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2E225E6F060031EBE8 /* icon.png */; };
 		7AF1ABC02242A9D0003EFE37 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1ABBF2242A9D0003EFE37 /* ItemCell.swift */; };
 		7AF1ABC22242AF12003EFE37 /* welcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1ABC12242AF12003EFE37 /* welcome.jpg */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		7AC6FB2822516BAC0031EBE8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7AC6FB2A225173470031EBE8 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCreatedViewController.swift; sourceTree = "<group>"; };
+		7AC6FB2E225E6F060031EBE8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Desktop/icon.png; sourceTree = "<group>"; };
 		7AF1ABBF2242A9D0003EFE37 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		7AF1ABC12242AF12003EFE37 /* welcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				7A4BB2F6223FF703000D6188 /* Assets.xcassets */,
 				7AF1ABC12242AF12003EFE37 /* welcome.jpg */,
 				7AC4724F225E64340009AE8D /* crosshair.png */,
+				7AC6FB2E225E6F060031EBE8 /* icon.png */,
 				7A4BB2F8223FF703000D6188 /* LaunchScreen.storyboard */,
 				7A4BB2FB223FF703000D6188 /* Info.plist */,
 			);
@@ -152,6 +155,7 @@
 			files = (
 				7A4BB2FA223FF703000D6188 /* LaunchScreen.storyboard in Resources */,
 				7A4BB2F7223FF703000D6188 /* Assets.xcassets in Resources */,
+				7AC6FB2F225E6F060031EBE8 /* icon.png in Resources */,
 				7AF1ABC22242AF12003EFE37 /* welcome.jpg in Resources */,
 				7A4BB2F5223FF703000D6188 /* Main.storyboard in Resources */,
 				7AC47250225E64340009AE8D /* crosshair.png in Resources */,
