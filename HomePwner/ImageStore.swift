@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageStore {
+public class ImageStore {
     let cache = NSCache<NSString, UIImage>()
     
     func setImage(_ image: UIImage, forKey key: String) {

@@ -8,17 +8,28 @@
 
 import UIKit
 
+public enum Department : String {
+    case null = "No Department"
+    case Automotive = "Automotive"
+    case Furniture = "Furniture"
+    case Grocery = "Grocery"
+    case Pharmacy = "Pharmacy"
+    case SportingGoods = "Sporting Goods"
+}
+
 class Item: NSObject, NSCoding {
     var name: String
     var valueInDollars: Int
     var serialNumber: String?
+    var department: Department
     var dateCreated: Date
     let itemKey: String
     
-    init(name: String, serialNumber: String?, valueInDollars: Int) {
+    init(name: String, serialNumber: String?, valueInDollars: Int, department: Department) {
         self.name = name
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
+        self.department = department
         self.dateCreated = Date()
         self.itemKey = UUID().uuidString
         super.init()
@@ -30,9 +41,11 @@ class Item: NSObject, NSCoding {
         itemKey = aDecoder.decodeObject(forKey: "itemKey") as! String
         serialNumber = aDecoder.decodeObject(forKey: "serialNumber") as! String?
         valueInDollars = aDecoder.decodeInteger(forKey: "valueInDollars")
+        department = aDecoder.decodeObject(forKey: "department") as! Department
         super.init()
     }
     
+    /*
     convenience init(random: Bool = false) {
         if random {
             let adjectives = ["Fluffy", "Rusty", "Shiny"]
@@ -52,6 +65,7 @@ class Item: NSObject, NSCoding {
             self.init(name: "", serialNumber: nil, valueInDollars: 0)
         }
     }
+    */
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
@@ -59,6 +73,7 @@ class Item: NSObject, NSCoding {
         aCoder.encode(itemKey, forKey: "itemKey")
         aCoder.encode(serialNumber, forKey: "serialNumber")
         aCoder.encode(valueInDollars, forKey: "valueInDollars")
+        aCoder.encode(department, forKey: "department")
     }
 }
 

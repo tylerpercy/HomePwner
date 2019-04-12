@@ -22,12 +22,14 @@ class ItemStore {
         return NSKeyedArchiver.archiveRootObject(allItems, toFile: itemArchiveURL.path)
     }
     
-    @discardableResult func createItem() -> Item {
-        let newItem = Item(random: true)
+    
+    @discardableResult func createItem(name: String, serial: String?, value: Int, department: Department) -> Item {
+        let newItem = Item(name: name, serialNumber: serial, valueInDollars: value, department: department)
         allItems.insert(newItem, at: 0)
         
         return newItem
     }
+    
     
     func removeItem(_ item: Item) {
         if let index = allItems.index(of: item) {
@@ -54,7 +56,6 @@ class ItemStore {
             allItems = archivedItems
         }
     }
-    
 }
 
 

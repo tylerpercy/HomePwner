@@ -20,6 +20,8 @@
 		7AC6FB2B225173470031EBE8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2A225173470031EBE8 /* CustomTextField.swift */; };
 		7AC6FB2D225173AC0031EBE8 /* DateCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */; };
 		7AC6FB2F225E6F060031EBE8 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AC6FB2E225E6F060031EBE8 /* icon.png */; };
+		7ADB70C1225ECBA50080B753 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB70C0225ECBA50080B753 /* AddItemViewController.swift */; };
+		7AE180F42261267C0067F1F2 /* departmentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE180F32261267C0067F1F2 /* departmentPickerViewController.swift */; };
 		7AF1ABC02242A9D0003EFE37 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1ABBF2242A9D0003EFE37 /* ItemCell.swift */; };
 		7AF1ABC22242AF12003EFE37 /* welcome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1ABC12242AF12003EFE37 /* welcome.jpg */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		7AC6FB2A225173470031EBE8 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCreatedViewController.swift; sourceTree = "<group>"; };
 		7AC6FB2E225E6F060031EBE8 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Desktop/icon.png; sourceTree = "<group>"; };
+		7ADB70C0225ECBA50080B753 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		7AE180F32261267C0067F1F2 /* departmentPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = departmentPickerViewController.swift; sourceTree = "<group>"; };
 		7AF1ABBF2242A9D0003EFE37 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		7AF1ABC12242AF12003EFE37 /* welcome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = welcome.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,7 +85,9 @@
 				7A153D78225BB44C0050FE12 /* ImageStore.swift */,
 				7AC6FB2A225173470031EBE8 /* CustomTextField.swift */,
 				7A60C0A8223FFA62002931FE /* ItemsViewController.swift */,
+				7ADB70C0225ECBA50080B753 /* AddItemViewController.swift */,
 				7AC6FB2822516BAC0031EBE8 /* DetailViewController.swift */,
+				7AE180F32261267C0067F1F2 /* departmentPickerViewController.swift */,
 				7AC6FB2C225173AC0031EBE8 /* DateCreatedViewController.swift */,
 				7A4BB2F3223FF703000D6188 /* Main.storyboard */,
 				7A4BB2F6223FF703000D6188 /* Assets.xcassets */,
@@ -170,8 +176,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AC6FB2B225173470031EBE8 /* CustomTextField.swift in Sources */,
+				7ADB70C1225ECBA50080B753 /* AddItemViewController.swift in Sources */,
 				7A60C0AB223FFB70002931FE /* Item.swift in Sources */,
 				7A60C0A9223FFA62002931FE /* ItemsViewController.swift in Sources */,
+				7AE180F42261267C0067F1F2 /* departmentPickerViewController.swift in Sources */,
 				7A60C0AD223FFF27002931FE /* ItemStore.swift in Sources */,
 				7AC6FB2922516BAC0031EBE8 /* DetailViewController.swift in Sources */,
 				7A153D79225BB44C0050FE12 /* ImageStore.swift in Sources */,

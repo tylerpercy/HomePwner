@@ -13,19 +13,6 @@ class ItemsViewController: UITableViewController {
     var itemStore: ItemStore!
     var imageStore: ImageStore!
     
-    //Function addNewItem: A button on the main storyboard will create a
-    //                     new item each time it is pressed
-    @IBAction func addNewItem(_ sender: UIBarButtonItem) {
-        // Create a new item and add it to the store
-        let newItem = itemStore.createItem()
-        // Figure out where that item is in the array
-        if let index = itemStore.allItems.index(of: newItem) {
-            let indexPath = IndexPath(row: index, section: 0)
-            // Insert this new row into the table
-            tableView.insertRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
     //This function maintains the number of rows in the tableview
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
@@ -33,12 +20,12 @@ class ItemsViewController: UITableViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        //checkSegue = true
         super.init(coder: aDecoder)
         navigationItem.leftBarButtonItem = editButtonItem
     }
 
-    //This function creates a randomly generated object and adds it to the tableview
-    //The object is put in its own cell which has a name, serial number, and price
+    //This function places a cell for an object on the tableview
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -53,6 +40,7 @@ class ItemsViewController: UITableViewController {
             cell.nameLabel.text = item.name
             cell.serialNumberLabel.text = item.serialNumber
             cell.valueLabel.text = "$\(item.valueInDollars)"
+            cell.departmentLabel.text = item.department.rawValue
             //Transparency so you can still see the dog in the background after cells are added
             cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
@@ -153,8 +141,14 @@ class ItemsViewController: UITableViewController {
                     = segue.destination as! DetailViewController
                 detailViewController.item = item
                 detailViewController.imageStore = imageStore
-    
-            } default:
+            }
+        case "addItem":
+            let item = itemStore.createItem(name: "", serial: "", value: 0, department: Department.null)
+            let detailViewController
+                = segue.destination as! DetailViewController
+            detailViewController.item = item
+            detailViewController.imageStore = imageStore
+        default:
                 preconditionFailure("Unexpected segue identifier.")
         }
     }
@@ -165,6 +159,7 @@ class ItemsViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         //self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
         super.viewWillAppear(animated)

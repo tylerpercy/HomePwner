@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     @IBOutlet var serialNumberField: CustomTextField!
     @IBOutlet var valueField: CustomTextField!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var departmentLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     
     @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
@@ -37,7 +38,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
                 (imagePicker.cameraOverlayView?.centerXAnchor)!).isActive = true
             crosshair.centerYAnchor.constraint(equalTo:
                 (imagePicker.cameraOverlayView?.centerYAnchor)!).isActive = true
-           
         } else {
             imagePicker.sourceType = .photoLibrary
         }
@@ -59,6 +59,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
     }
     
     var imageStore: ImageStore!
+    var itemsViewController: ItemsViewController!
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String: Any]) {
@@ -82,6 +83,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         case "changeDate"?:
             let dateCreatedViewController = segue.destination as! DateCreatedViewController
             dateCreatedViewController.item = item
+        case "changeDepartment"?:
+            let departmentPickerViewController = segue.destination as! DepartmentPickerViewController
+            departmentPickerViewController.item = item
         default:
             preconditionFailure("Unexpected segue identifier.")
         }
@@ -93,6 +97,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         serialNumberField.text = item.serialNumber
         valueField.text = numberFormatter.string(from: NSNumber(value: item.valueInDollars))
         dateLabel.text = dateFormatter.string(from: item.dateCreated)
+        departmentLabel.text = item.department.rawValue
         
         let key = item.itemKey
         let imageToDisplay = imageStore.image(forKey: key)
@@ -103,15 +108,20 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         super.viewWillDisappear(animated)
         // Clear first responder
         view.endEditing(true)
-        
-        // "Save" changes to item
-        item.name = nameField.text ?? ""
-        item.serialNumber = serialNumberField.text
-        if let valueText = valueField.text,
-            let value = numberFormatter.number(from: valueText) {
-            item.valueInDollars = value.intValue
+        if (nameField.text == "" || valueField.text == nil) {
+            //FIXME: DOESNT DELETE NEWLY CREATED ROW IF INFO NOT GIVEN
+            print("Unable to save - Ensure user has entered a valid Name and Value")
         } else {
-            item.valueInDollars = 0
+        // "Save" changes to item
+            print("You got here")
+            item.name = nameField.text ?? ""
+            item.serialNumber = serialNumberField.text
+            if let valueText = valueField.text,
+                let value = numberFormatter.number(from: valueText) {
+                item.valueInDollars = value.intValue
+            } else {
+                item.valueInDollars = 0
+            }
         }
     }
     
@@ -135,3 +145,5 @@ class DetailViewController: UIViewController, UITextFieldDelegate,
         return formatter
     }()
 }
+
+
